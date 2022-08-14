@@ -1,0 +1,15 @@
+.MuiAppBar-root {
+  &.mart--navbar {
+    background-color: rgba(10, 25, 41, 0.7);
+    box-shadow: rgb(19 47 76) 0px -1px 1px inset;
+    backdrop-filter: blur(20px);
+  }
+  .MuiToolbar-root {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  img.mart--logo {
+    width: 1.875rem;
+  }
+}
