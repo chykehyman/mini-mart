@@ -1,30 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
-import axios from "axios";
 import "./App.scss";
-import LoaderComponent from "./components/loader/loader.component";
 import NavBar from "./components/navbar/navbar.component";
+import Products from "./components/products/products.component";
+import { PRODUCT_ITEMS, TOTAL_CREDITS } from "./constants";
+import { ProductModel } from "./api/model";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 const App: FC<{}> = () => {
-  const { isLoading, error, data } = useQuery(
-    ["products"],
-    async () => {
-      const data = await axios.get("/marketplace/blocks", {
-        headers: { "Content-Type": "application/json" },
-      });
-      return data;
-    },
-    { refetchOnWindowFocus: false }
+  const [cartItems, setCartItems] = useLocalStorage<ProductModel[]>(
+    PRODUCT_ITEMS,
+    []
   );
+  const [totalCredits] = useLocalStorage<number>(TOTAL_CREDITS, 10000);
 
-  if (isLoading) return <LoaderComponent message="Loading products" />;
-  console.log({ data });
-
-  // if (error) return "An error has occurred: " + (error as {message: string}).message;
-
+  const onAddToCart = (product: ProductModel) => {
+    setCartItems((prev) => [...prev, { ...product }]);
+  };
   return (
-    <div className="App">
-      <NavBar numberOfCartItems={2} totalCredits={10000} />
+    <div className="app-container">
+      <NavBar
+        totalCredits={totalCredits}
+        numberOfCartItems={cartItems.length}
+      />
+      <Products cartItems={cartItems} onAddToCart={onAddToCart} />
     </div>
   );
 };

@@ -21,7 +21,12 @@ const NavBar: FC<NavbarProps> = ({ numberOfCartItems, totalCredits }) => {
           Total Credits: <strong>{totalCredits}</strong>
         </Box>
         <IconButton aria-label="cart" color="inherit">
-          <Badge badgeContent={numberOfCartItems} color="error" max={9}>
+          <Badge
+            badgeContent={numberOfCartItems}
+            color="error"
+            max={9}
+            showZero
+          >
             <ShoppingCart className="custom-basket" />
           </Badge>
         </IconButton>
