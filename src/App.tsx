@@ -1,28 +1,52 @@
-import { FC } from "react";
 import "./App.scss";
-import NavBar from "./components/navbar/navbar.component";
-import Products from "./components/products/products.component";
-import { PRODUCT_ITEMS, TOTAL_CREDITS } from "./constants";
+import { FC, useState } from "react";
+import { DEFAULT_CREDITS, PRODUCT_ITEMS, TOTAL_CREDITS } from "./constants";
 import { ProductModel } from "./api/model";
-import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useLocalStorage } from "./hooks";
+import { NavBarComponent } from "./components/navbar";
+import { ProductsComponent } from "./components/products";
+import { CartDrawerComponent } from "./components/cart-drawer";
 
 const App: FC<{}> = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const toggleCartDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      ((event as React.KeyboardEvent).key === "Tab" ||
+        (event as React.KeyboardEvent).key === "Shift")
+    ) {
+      return;
+    }
+
+    setIsOpen(!isOpen);
+  };
+
   const [cartItems, setCartItems] = useLocalStorage<ProductModel[]>(
     PRODUCT_ITEMS,
     []
   );
-  const [totalCredits] = useLocalStorage<number>(TOTAL_CREDITS, 10000);
+  const [totalCredits, setTotalCredits] = useLocalStorage<number>(
+    TOTAL_CREDITS,
+    DEFAULT_CREDITS
+  );
 
-  const onAddToCart = (product: ProductModel) => {
-    setCartItems((prev) => [...prev, { ...product }]);
-  };
   return (
     <div className="app-container">
-      <NavBar
+      <NavBarComponent
         totalCredits={totalCredits}
         numberOfCartItems={cartItems.length}
+        toggleCartDrawer={toggleCartDrawer}
       />
-      <Products cartItems={cartItems} onAddToCart={onAddToCart} />
+      <ProductsComponent cartItems={cartItems} setCartItems={setCartItems} />
+      <CartDrawerComponent
+        isOpen={isOpen}
+        toggleCartDrawer={toggleCartDrawer}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        totalCredits={totalCredits}
+        setTotalCredits={setTotalCredits}
+      />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { Box, Grid, Skeleton } from "@mui/material";
 import { FC } from "react";
 
-const ProductsSkeleton: FC = () => {
+export const ProductsSkeleton: FC<{}> = () => {
   return (
     <>
       {Array.from(new Array(8)).map((_, index) => (

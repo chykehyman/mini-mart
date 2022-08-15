@@ -3,14 +3,15 @@ import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 import { ProductModel } from "../../api/model";
 import { getMartProducts } from "../../api/logic";
-import ProductsSkeleton from "../skeletons/products.skeleton";
-import Product from "../product/product.component";
+import { ProductsSkeleton } from "../skeletons";
+import { ProductComponent } from "../product";
+import { ErrorMessageComponent } from "../error-message";
+import { IProductsProps } from ".";
 
-type ProductsProps = {
-  onAddToCart: (cartItem: ProductModel) => void;
-  cartItems: ProductModel[];
-};
-const ProductsComponent: FC<ProductsProps> = ({ onAddToCart, cartItems }) => {
+export const ProductsComponent: FC<IProductsProps> = ({
+  cartItems,
+  setCartItems,
+}) => {
   const { data, isLoading, error } = useQuery<ProductModel[]>(
     ["products"],
     getMartProducts,
@@ -20,7 +21,15 @@ const ProductsComponent: FC<ProductsProps> = ({ onAddToCart, cartItems }) => {
     }
   );
 
-  // if (error) return "An error has occurred: " + (error as {message: string}).message;
+  const onAddToCart = (product: ProductModel) => {
+    setCartItems((prev) => [...prev, { ...product }]);
+  };
+
+  if (error)
+    return (
+      <ErrorMessageComponent message={(error as { message: string }).message} />
+    );
+
   return (
     <Container style={{ marginTop: "75px" }}>
       <Grid container rowGap={4} columnSpacing={2}>
@@ -28,7 +37,7 @@ const ProductsComponent: FC<ProductsProps> = ({ onAddToCart, cartItems }) => {
         {!isLoading &&
           data &&
           data.map((product) => (
-            <Product
+            <ProductComponent
               key={product.id}
               product={product}
               handleAddToCart={onAddToCart}

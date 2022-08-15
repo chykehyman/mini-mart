@@ -2,13 +2,13 @@ import "./navbar.component.scss";
 import { ShoppingCart } from "@mui/icons-material";
 import { AppBar, Badge, Box, IconButton, Toolbar } from "@mui/material";
 import { FC } from "react";
+import { INavbarProps } from ".";
 
-type NavbarProps = {
-  numberOfCartItems: number;
-  totalCredits: number;
-};
-
-const NavBar: FC<NavbarProps> = ({ numberOfCartItems, totalCredits }) => {
+export const NavBarComponent: FC<INavbarProps> = ({
+  numberOfCartItems,
+  totalCredits,
+  toggleCartDrawer,
+}) => {
   return (
     <AppBar position="fixed" className="mart--navbar">
       <Toolbar>
@@ -20,7 +20,11 @@ const NavBar: FC<NavbarProps> = ({ numberOfCartItems, totalCredits }) => {
         <Box>
           Total Credits: <strong>{totalCredits}</strong>
         </Box>
-        <IconButton aria-label="cart" color="inherit">
+        <IconButton
+          aria-label="cart"
+          color="inherit"
+          onClick={toggleCartDrawer}
+        >
           <Badge
             badgeContent={numberOfCartItems}
             color="error"
@@ -35,4 +39,4 @@ const NavBar: FC<NavbarProps> = ({ numberOfCartItems, totalCredits }) => {
   );
 };
 
-export default NavBar;
+export default NavBarComponent;

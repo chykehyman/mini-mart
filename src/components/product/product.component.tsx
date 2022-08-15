@@ -1,14 +1,9 @@
 import { Grid, Box, Typography, Button } from "@mui/material";
 import { ShoppingBasket, TaskAlt } from "@mui/icons-material";
 import { FC } from "react";
-import { ProductModel } from "../../api/model";
+import { IProductProps } from ".";
 
-type ProductProps = {
-  product: ProductModel;
-  cartItems: ProductModel[];
-  handleAddToCart: (product: ProductModel) => void;
-};
-const ProductComponent: FC<ProductProps> = ({
+export const ProductComponent: FC<IProductProps> = ({
   product,
   cartItems,
   handleAddToCart,

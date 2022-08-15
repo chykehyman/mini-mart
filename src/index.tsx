@@ -1,7 +1,9 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import React from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ReactDOM from "react-dom/client";
+import { StrictMode } from "react";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -12,10 +14,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
+    <StrictMode>
       <CssBaseline />
+      <ToastContainer />
       <App />
-    </React.StrictMode>
+    </StrictMode>
   </QueryClientProvider>
 );
 
