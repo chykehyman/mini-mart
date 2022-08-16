@@ -1,10 +1,14 @@
 import "./App.scss";
 import { FC, useState } from "react";
-import { DEFAULT_CREDITS, PRODUCT_ITEMS, TOTAL_CREDITS } from "./constants";
+import {
+  DEFAULT_CREDITS,
+  PRODUCT_ITEMS,
+  TOTAL_CREDITS,
+} from "./shared/constants";
 import { ProductModel } from "./api/model";
-import { useLocalStorage } from "./hooks";
+import { useLocalStorage } from "./shared/hooks";
 import { NavBarComponent } from "./components/navbar";
-import { ProductsComponent } from "./components/products";
+import { ProductsComponent } from "./features/products";
 import { CartDrawerComponent } from "./components/cart-drawer";
 
 const App: FC<{}> = () => {

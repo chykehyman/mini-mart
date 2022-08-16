@@ -18,12 +18,3 @@
   },
   "include": ["src"]
 }
-
-// {
-//   "compilerOptions": {
-//     "baseUrl": "./",
-//     "incremental": true,
-//     "outDir": "build",
-//   },
-//   "exclude": ["build", "**/node_modules", "**/.*/"]
-// }

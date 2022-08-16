@@ -3,9 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 import { ProductModel } from "../../api/model";
 import { getMartProducts } from "../../api/logic";
-import { ProductsSkeleton } from "../skeletons";
-import { ProductComponent } from "../product";
-import { ErrorMessageComponent } from "../error-message";
+import { ProductsSkeleton } from "../../components/skeletons";
+import { ProductComponent } from "../../components/product";
+import { ErrorMessageComponent } from "../../components/error-message";
 import { IProductsProps } from ".";
 
 export const ProductsComponent: FC<IProductsProps> = ({
