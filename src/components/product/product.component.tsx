@@ -1,4 +1,4 @@
-import { Grid, Box, Typography, Button } from "@mui/material";
+import { Grid, Box, Typography, Button, Avatar } from "@mui/material";
 import { ShoppingBasket, TaskAlt } from "@mui/icons-material";
 import { FC } from "react";
 import { IProductProps } from ".";
@@ -23,11 +23,18 @@ export const ProductComponent: FC<IProductProps> = ({
       }}
     >
       <Box height={200}>
-        <img
-          style={{ width: "100%", height: "100%" }}
+        <Avatar
           alt={name}
           src={metadata?.blockThumbnailUrl}
-        />
+          variant="square"
+          sx={{ width: "100%", height: "100%" }}
+        >
+          <img
+            alt={name}
+            style={{ width: "100%", height: "100%" }}
+            src="/default-image.png"
+          />
+        </Avatar>
       </Box>
       <Box
         sx={{ pt: 1, pb: 2 }}
