@@ -8,7 +8,7 @@ import {
 import { ProductModel } from "./api/model";
 import { useLocalStorage } from "./shared/hooks";
 import { NavBarComponent } from "./components/navbar";
-import { ProductsComponent } from "./features/products";
+import { ProductsFeature } from "./features/products";
 import { CartDrawerComponent } from "./components/cart-drawer";
 
 const App: FC<{}> = () => {
@@ -42,7 +42,7 @@ const App: FC<{}> = () => {
         numberOfCartItems={cartItems.length}
         toggleCartDrawer={toggleCartDrawer}
       />
-      <ProductsComponent cartItems={cartItems} setCartItems={setCartItems} />
+      <ProductsFeature cartItems={cartItems} setCartItems={setCartItems} />
       <CartDrawerComponent
         isOpen={isOpen}
         toggleCartDrawer={toggleCartDrawer}

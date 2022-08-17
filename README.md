@@ -21,7 +21,7 @@ For demo, visit https://radiant-medovik-b514c3.netlify.app
 
 ## Implementation process
 
-- Architecture: Package-by-feature
+- Architecture: Package-By-Feature
 - Server-side data storage: [`React-query v4`](https://tanstack.com/query/v4/?from=reactQueryV3&original=https://react-query-v3.tanstack.com/)
 - Client-side data storage: [`LocalStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
@@ -78,6 +78,12 @@ In this stage, I had to figure out the data flow and required minimal state of t
   > I considered implementing a useLocalStorage hook I could reuse within the app for easy and clean access to globally stored data. <br /> I also considered placing top level data inside the top level component - i.e App.jsx - so I could easily pass common data across to lower level components - i.e Navbar, cartDrawer and Products - that needed it.
 
   `Please Note: It is very important to isolate certain functionalities like api calls, local functions, local states, within components that only require or are affected by it. For instance, api call to fetch all products done on the Products component`
+
+#### 5. Testing
+
+Testing basically helps you spot bugs on time. The more tests I write, the more confidence I have with my code. There are a few types/categories of testing code or an apps functionality. They include end-to-end, integration, unit tests, etc. They image below shows an example of a unit(component) test I wrote.
+
+<div><img src="https://iili.io/gx5n9f.md.png" alt="gx5n9f.md.png" border="0"></div><br /><div target='_blank' href='https://freeimage.host/'></div>
 
 ## Installation
 

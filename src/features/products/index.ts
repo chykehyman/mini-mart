@@ -1,2 +1,2 @@
-export { ProductsComponent } from "./products.component";
-export type { IProductsProps } from "./products.component.props";
+export { ProductsFeature } from "./products.feature";
+export type { IProductsFeatureProps } from "./products.feature.props";

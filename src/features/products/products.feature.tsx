@@ -6,9 +6,9 @@ import { getMartProducts } from "../../api/logic";
 import { ProductsSkeleton } from "../../components/skeletons";
 import { ProductComponent } from "../../components/product";
 import { ErrorMessageComponent } from "../../components/error-message";
-import { IProductsProps } from ".";
+import { IProductsFeatureProps } from ".";
 
-export const ProductsComponent: FC<IProductsProps> = ({
+export const ProductsFeature: FC<IProductsFeatureProps> = ({
   cartItems,
   setCartItems,
 }) => {
@@ -49,4 +49,4 @@ export const ProductsComponent: FC<IProductsProps> = ({
   );
 };
 
-export default ProductsComponent;
+export default ProductsFeature;

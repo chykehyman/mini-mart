@@ -1,2 +1,2 @@
 export { ProductComponent } from "./product.component";
-export type { IProductProps } from "./product.component.props";
+export type { IProductComponentProps } from "./product.component.props";

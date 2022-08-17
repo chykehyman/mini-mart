@@ -1,9 +1,9 @@
 import { Grid, Box, Typography, Button, Avatar } from "@mui/material";
 import { ShoppingBasket, TaskAlt } from "@mui/icons-material";
 import { FC } from "react";
-import { IProductProps } from ".";
+import { IProductComponentProps } from ".";
 
-export const ProductComponent: FC<IProductProps> = ({
+export const ProductComponent: FC<IProductComponentProps> = ({
   product,
   cartItems,
   handleAddToCart,
@@ -22,7 +22,7 @@ export const ProductComponent: FC<IProductProps> = ({
         height: "340px",
       }}
     >
-      <Box height={200}>
+      <Box height={200} bgcolor="lightgray">
         <Avatar
           alt={name}
           src={metadata?.blockThumbnailUrl}

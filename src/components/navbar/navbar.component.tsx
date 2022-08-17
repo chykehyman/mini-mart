@@ -16,9 +16,11 @@ export const NavBarComponent: FC<INavbarProps> = ({
           src="https://cdn-images-1.medium.com/max/1200/1*R_9fxARs388FHxbffuKyTg.png"
           alt="Up42 logo"
           className="mart--logo"
+          data-testid="site-logo"
         />
         <Box>
-          Total Credits: <strong>{totalCredits}</strong>
+          Total Credits:{" "}
+          <strong data-testid="total-credits-number">{totalCredits}</strong>
         </Box>
         <IconButton
           aria-label="cart"
@@ -30,6 +32,7 @@ export const NavBarComponent: FC<INavbarProps> = ({
             color="error"
             max={9}
             showZero
+            data-testid="cart-items-badge"
           >
             <ShoppingCart className="custom-basket" />
           </Badge>
